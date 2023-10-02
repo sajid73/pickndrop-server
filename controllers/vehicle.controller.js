@@ -52,3 +52,17 @@ module.exports.updateVehicleInfo = async (req, res) => {
         });
     }
 };
+module.exports.deleteVehicle = async (req, res) => {
+    try {
+        const vehicle = await Vehicle.findByIdAndDelete(req.params.id);
+        return res.status(200).json({
+            vehicle,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            error,
+            error: error.message,
+            message: "Something went wrong on deleting vehicle!",
+        });
+    }
+};

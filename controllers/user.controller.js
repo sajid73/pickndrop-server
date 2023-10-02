@@ -97,6 +97,19 @@ module.exports.updateUser = async (req, res) => {
     }
 };
 
+module.exports.deleteUser = async (req, res) => {
+    try {
+        const employee = await User.findByIdAndDelete(req.params.id);
+        return res.status(200).json({});
+    } catch (error) {
+        return res.status(500).json({
+            error,
+            error: error.message,
+            message: "Something went wrong on updating user info!",
+        });
+    }
+};
+
 module.exports.findAll = async (req, res) => {
     try {
         const employee = await User.find();
