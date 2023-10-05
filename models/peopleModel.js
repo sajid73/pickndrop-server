@@ -11,7 +11,7 @@ const peopleSchema = new mongoose.Schema({
         unique: true,
         lowercase: true,
     },
-    address: String,
+    zone: String,
     arrival: String,
     departure: String,
     role: {
